@@ -20,8 +20,8 @@ from time import sleep
 #print(sys.path)
 print(pyfirmata.__file__)
 #import numpy
-app = flask.Flask("test")
-
+app = flask.Flask(__name__)
+app.config = ['DEBUG']
 #api = flask_restful.Api(app)
 data = []
 class Data_Joystick:
@@ -29,7 +29,7 @@ class Data_Joystick:
         return data
     def post(self):
         return data
-
+   
 
 try:
         board = pyfirmata.Arduino("/dev/ttyACM0")
@@ -56,10 +56,11 @@ except:
 if __name__ == "__main__":
     #app.flask.run()
     print("I can start the program")
+    app.run()
 #if _main_ =="_main_":
 #    app.run()
 
 #url = "http://127.0.0.1:5000"
 #response = requests.get(url=url)
 #print(response.status_code)
-#print(response.text)    
+#print(response.text) 
