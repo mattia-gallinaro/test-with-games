@@ -28,8 +28,7 @@ thread1 = myThread(1, "Thread-1", 1)
 thread2 = myThread(2, "Thread-2", 2)
 
 thread1.start()
-thread2 = myThread(2, "Thread-2", 2)
-
+thread2.start()
 
 threads.append(thread1)
 threads.append(thread2)
