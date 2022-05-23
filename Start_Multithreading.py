@@ -1,4 +1,5 @@
 from asyncio.windows_events import NULL
+from crypt import methods
 from logging import NullHandler
 import pyfirmata
 import threading
@@ -27,7 +28,13 @@ def Send_Data():
     data = value_y.read()
     return data
 
+app.route("/data", methods= ["GET"])
+def Joystick_Information():
+    return 0
+def flask_app():
+    app.run()
 for i in 2:
-    t = threading.Thread(target = Send_Data() args())
+    
+    t = threading.Thread(target = Send_Data())
     t.start()
     t.join()
