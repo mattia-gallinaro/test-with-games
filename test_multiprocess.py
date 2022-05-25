@@ -40,9 +40,16 @@ def ArduinoRead():
 
 p_Arduino = multiprocessing.Process(target = ArduinoRead(), args=())
 p_Flask = multiprocessing.Process(target = app(), args= ())
+
 p = multiprocessing.Process(target = f, args = (3, ))
 p.start()
 p.join()
 
 with multiprocessing.Pool(5) as e:
     print(e.map(f, [1,2,3]))
+
+while True:
+    p_Arduino.start()
+    p_Arduino.join()
+    p_Flask.start()
+    p_Flask.join()
