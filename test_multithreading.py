@@ -10,9 +10,9 @@ class myThread(threading.Thread):
         self.delay = delay
     def run(self):
         print ("Starting :" + self.name)
-        threadlock.acquire()
-        print_name(self.name, self.delay, 3)
-        threadlock.release()
+        with threadlock:
+            print_name(self.name, self.delay, 3)
+        
 
 
 def print_name(threadName, delay, counter):
